@@ -1,0 +1,36 @@
+usernames_and_passwords= {}
+while True:
+    print("1. Insert")
+    print("2. Display all usernames")
+    print("3. Display all passwords")
+    print("4. Get password")
+    print("5. Delete")
+    print("6. Change password")
+    print("7. Exit")
+    choice= int(input("What is your choice?"))
+    if choice== 1:
+       Username=input("Enter the username you want to add:")
+       Password=input("Enter the password you want to add:")
+       usernames_and_passwords[Username]=Password
+    elif choice== 2:
+        print(usernames_and_passwords.keys())
+    elif choice== 3:
+        print(usernames_and_passwords.values())
+    elif choice== 4:
+        identify= input("What is the username that you want the password of?")
+        if identify in usernames_and_passwords:
+            print(usernames_and_passwords[identify])
+        else:
+            print("The username you have entered does not exist in the dictionary. Please try again.")
+    elif choice== 5:
+        delete= input("Which username do you want to delete?")
+        del usernames_and_passwords[delete]
+    elif choice== 6:
+        change= input("What password do you want to change?:")
+        username_change= input("What username does this password apply to?")
+        new= input("What is the new password?:")
+        del usernames_and_passwords[username_change]
+        usernames_and_passwords[username_change]=new
+    elif choice== 7:
+        print("You have exited the dictionary! Bye bye!")
+        break
