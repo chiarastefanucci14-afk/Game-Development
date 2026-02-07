@@ -1,0 +1,13 @@
+Books= {'science':'150','math':'300','English':'100','Spanish':'200','geaography':'250','physics':'300','history':'250'}
+print(Books)
+print("OH!Just dicovered the physics book has changed its price!")
+Books['physics']= 200
+print(Books)
+print("2 more books just arrived to the shop!")
+Books['STEM']=70
+Books['biology']=50
+print(Books)
+user=input("Which subject do you need a book for?")
+print("Here you are!:")
+print(Books[user])
+print("Bye and Thank you!")
