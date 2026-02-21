@@ -20,6 +20,7 @@ for i in range(rows):
     for j in range(columns):
         print(matrix[i][j],end=" ")
     print()
+#Add matrices
 matrix1= [[3,8],[4,1]]
 matrix2= [[2,6],[10,9]]
 addition=[[0,0],[0,0]]
@@ -27,3 +28,11 @@ for i in range(2):
     for j in range(2):
         addition[i][j]= matrix1[i][j]+matrix2[i][j]
 print(addition)
+#HOMEWORK- SUBTRACT 2 MATRICES
+matrix3= [[8,6],[7,9]]
+matrix4= [[2,4],[1,3]]
+subtraction= [[0,0],[0,0]]
+for i in range(2):
+    for j in range(2):
+        subtraction[i][j]= matrix3[i][j]-matrix4[i][j]
+print(subtraction)
