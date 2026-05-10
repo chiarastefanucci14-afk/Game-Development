@@ -20,7 +20,29 @@ def create():
 def draw():
     global total_time
     screen.blit("space",(0,0))
+    number= 1
     for i in planets:
         i.draw()
+        screen.draw.text(str(number),(i.pos[0],i.pos[1]+20)) 
+        number+=1
+    for i in lines:
+        screen.draw.line(i[0],i[1],"white")
+    if next_planet < total_planets:
+        total_time= time.time()- start_time
+        screen.draw.text(str(round(total_time, 1)),(10,10),fontsize= 80)
+    else:
+        screen.draw.text(str(round(total_time, 1)),(10,10),fontsize= 80)
+def update():
+    pass
+def on_mouse_down(pos):
+    global next_planet, lines
+    if next_planet< total_planets:
+        if planets[next_planet].collidepoint(pos):
+            if next_planet:
+                lines.append((planets[next_planet-1].pos,planets[next_planet].pos))
+            next_planet+=1
+        else:
+            lines=[]
+            next_planet= 0
 create()
 pgzrun.go()
