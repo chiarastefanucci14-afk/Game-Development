@@ -51,7 +51,9 @@ def update_time():
 def game_over():
     global question, Time_left, Is_game_over
     m= f"Game over\n you got {Score} questions correct"
-    question= [m,"-","-",""]
+    question= [m,"-","-","-","-",5]
+    Time_left= 0
+    Is_game_over= True
 def read_question():
     global Count, Questions
     file= open(File, "r")
@@ -63,6 +65,33 @@ def read_next_question():
     global Index
     Index+=1
     return Questions.pop(0).split(",")
+def on_mouse_down(pos):
+    j=1
+    for i in Answer_box:
+        if i.collidepoint(pos):
+            if j is int(question[5]):
+                correct_answer()
+            else:
+                game_over()
+        j+=1
+    if Skip_box.collidepoint(pos):
+        skip_question()
+def correct_answer():
+    global Score, question, Time_left, Questions
+    Score+=1
+    if Questions:
+        question= read_next_question()
+        Time_left= 10
+    else:
+        game_over()
+def skip_question():
+    global question, Time_left
+    if Questions and not Is_game_over:
+        question= read_next_question()
+        Time_left= 10
+    else:
+        game_over()
 read_question()
 question= read_next_question()
+clock.schedule_interval(update_time,1)
 pgzrun.go()
